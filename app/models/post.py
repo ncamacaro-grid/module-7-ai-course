@@ -4,6 +4,10 @@ from app.extensions import db
 
 class Post(db.Model):
     __tablename__ = "posts"
+    __table_args__ = (
+        db.Index("ix_posts_category_id", "category_id"),
+        db.Index("ix_posts_created_at", "created_at"),
+    )
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)

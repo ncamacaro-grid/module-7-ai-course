@@ -4,6 +4,9 @@ from app.extensions import db
 
 class Comment(db.Model):
     __tablename__ = "comments"
+    __table_args__ = (
+        db.Index("ix_comments_post_id", "post_id"),
+    )
 
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.Text, nullable=False)
